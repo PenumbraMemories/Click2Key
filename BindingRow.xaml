@@ -1,0 +1,23 @@
+<UserControl x:Class="Click2Key.Controls.BindingRow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" CornerRadius="12" Padding="20,18" Margin="0,0,0,12">
+    <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="115"/><ColumnDefinition Width="*"/><ColumnDefinition Width="42"/><ColumnDefinition Width="38"/></Grid.ColumnDefinitions>
+        <StackPanel><TextBlock Text="触发键" Foreground="{DynamicResource MutedBrush}" FontSize="12"/><Button x:Name="KeyButton" Background="{DynamicResource KeycapBrush}" Foreground="{DynamicResource KeyInkBrush}" FontSize="16" FontWeight="Bold" Margin="0,7,18,0" Click="CaptureKey_Click" PreviewKeyDown="Capture_PreviewKeyDown"/></StackPanel>
+        <StackPanel Grid.Column="1"><TextBlock Text="鼠标动作" Foreground="{DynamicResource MutedBrush}" FontSize="12"/><ComboBox x:Name="ActionCombo" Margin="0,7,18,0" SelectionChanged="Control_Changed"/></StackPanel>
+        <CheckBox x:Name="EnabledToggle" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="启用此绑定" Checked="Control_Changed" Unchecked="Control_Changed"/>
+        <Button Grid.Column="3" Content="×" Width="32" Height="32" FontSize="19" FontWeight="Bold" Foreground="{DynamicResource PinkInkBrush}" Background="{DynamicResource PinkKeycapBrush}" Padding="0" ToolTip="删除绑定" Click="Remove_Click"/>
+      </Grid>
+      <Expander Grid.Row="1" Header="高级参数" Foreground="{DynamicResource MutedBrush}" Margin="0,12,0,0">
+        <Grid Margin="0,12,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+          <StackPanel Margin="0,0,14,0"><TextBlock Text="长按阈值 (ms)" Foreground="{DynamicResource MutedBrush}" FontSize="12"/><TextBox x:Name="HoldDelayBox" Margin="0,6,0,0" LostFocus="Parameter_Changed" PreviewKeyDown="Parameter_PreviewKeyDown"/></StackPanel>
+          <StackPanel Grid.Column="1" Margin="0,0,14,0"><TextBlock Text="连续间隔 (ms)" Foreground="{DynamicResource MutedBrush}" FontSize="12"/><TextBox x:Name="RepeatBox" Margin="0,6,0,0" LostFocus="Parameter_Changed" PreviewKeyDown="Parameter_PreviewKeyDown"/></StackPanel>
+          <StackPanel Grid.Column="2"><TextBlock Text="滚轮步长" Foreground="{DynamicResource MutedBrush}" FontSize="12"/><TextBox x:Name="WheelDeltaBox" Margin="0,6,0,0" LostFocus="Parameter_Changed" PreviewKeyDown="Parameter_PreviewKeyDown"/></StackPanel>
+        </Grid>
+      </Expander>
+    </Grid>
+  </Border>
+</UserControl>
+
+
